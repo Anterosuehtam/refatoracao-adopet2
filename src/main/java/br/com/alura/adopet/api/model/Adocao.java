@@ -17,11 +17,9 @@ public class Adocao {
     private LocalDateTime data;
 
     @ManyToOne
-    @JsonBackReference("tutor_adocoes")
     private Tutor tutor;
 
     @OneToOne
-    @JsonManagedReference("adocao_pets")
     private Pet pet;
 
     private String motivo;
