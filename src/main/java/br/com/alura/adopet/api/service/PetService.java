@@ -19,5 +19,4 @@ public class PetService {
                 .map(PetDto::new)
                 .toList();
     }
-
 }
