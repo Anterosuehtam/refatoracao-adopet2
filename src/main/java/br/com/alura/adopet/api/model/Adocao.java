@@ -1,6 +1,7 @@
 package br.com.alura.adopet.api.model;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -14,10 +15,10 @@ public class Adocao {
 
     private LocalDateTime data;
 
-    @ManyToOne(fetch =  FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Tutor tutor;
 
-    @OneToOne(fetch =  FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     private Pet pet;
 
     private String motivo;
@@ -35,7 +36,7 @@ public class Adocao {
         this.data = LocalDateTime.now();
     }
 
-    public Adocao() {}
+    public Adocao(){}
 
     @Override
     public boolean equals(Object o) {
@@ -64,6 +65,10 @@ public class Adocao {
 
     public Pet getPet() {
         return pet;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
     }
 
     public String getMotivo() {

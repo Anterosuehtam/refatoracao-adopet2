@@ -12,20 +12,21 @@ import org.springframework.stereotype.Service;
 public class TutorService {
 
     @Autowired
-    private TutorRepository tutorRepository;
+    private TutorRepository repository;
 
     public void cadastrar(CadastroTutorDto dto) {
-        boolean jaCadastrado = tutorRepository.existsByTelefoneOrEmail(dto.telefone(), dto.email());
+        boolean jaCadastrado = repository.existsByTelefoneOrEmail(dto.telefone(), dto.email());
 
         if (jaCadastrado) {
             throw new ValidacaoException("Dados já cadastrados para outro tutor!");
         }
 
-        tutorRepository.save(new Tutor(dto));
+        repository.save(new Tutor(dto));
     }
 
     public void atualizar(AtualizacaoTutorDto dto) {
-        Tutor tutor = tutorRepository.getReferenceById(dto.id());
+        Tutor tutor = repository.getReferenceById(dto.id());
         tutor.atualizarDados(dto);
     }
+
 }

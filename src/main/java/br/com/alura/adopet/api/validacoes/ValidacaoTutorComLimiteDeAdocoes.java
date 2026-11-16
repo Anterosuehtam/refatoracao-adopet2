@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class ValidacaoTutorComLimiteDeAdocoes implements ValidacaoSolicitacaoAdocao{
+public class ValidacaoTutorComLimiteDeAdocoes implements ValidacaoSolicitacaoAdocao {
 
     @Autowired
     private AdocaoRepository adocaoRepository;
@@ -21,10 +21,9 @@ public class ValidacaoTutorComLimiteDeAdocoes implements ValidacaoSolicitacaoAdo
     @Autowired
     private TutorRepository tutorRepository;
 
-
     public void validar(SolicitacaoAdocaoDto dto) {
         List<Adocao> adocoes = adocaoRepository.findAll();
-        Tutor tutor = tutorRepository.getReferenceById(dto.idTtutor());
+        Tutor tutor = tutorRepository.getReferenceById(dto.idTutor());
         for (Adocao a : adocoes) {
             int contador = 0;
             if (a.getTutor() == tutor && a.getStatus() == StatusAdocao.APROVADO) {
@@ -35,4 +34,5 @@ public class ValidacaoTutorComLimiteDeAdocoes implements ValidacaoSolicitacaoAdo
             }
         }
     }
+
 }

@@ -30,7 +30,7 @@ public class AbrigoService {
                 .toList();
     }
 
-    public void cadastrar(CadastroAbrigoDto dto) {
+    public void cadatrar(CadastroAbrigoDto dto) {
         boolean jaCadastrado = abrigoRepository.existsByNomeOrTelefoneOrEmail(dto.nome(), dto.telefone(), dto.email());
 
         if (jaCadastrado) {
@@ -55,10 +55,11 @@ public class AbrigoService {
         try {
             Long id = Long.parseLong(idOuNome);
             optional = abrigoRepository.findById(id);
-        }catch (NumberFormatException e) {
+        } catch (NumberFormatException exception) {
             optional = abrigoRepository.findByNome(idOuNome);
         }
 
-        return optional.orElseThrow(() -> new ValidacaoException("Abrigo não encontrado!"));
+        return optional.orElseThrow(() -> new ValidacaoException("Abrigo não encontrado"));
     }
+
 }

@@ -34,8 +34,7 @@ public class Pet {
     @OneToOne(mappedBy = "pet", fetch = FetchType.LAZY)
     private Adocao adocao;
 
-    public Pet() {
-    }
+    public Pet(){}
 
     public Pet(CadastroPetDto dto, Abrigo abrigo) {
         this.tipo = dto.tipo();
@@ -95,10 +94,6 @@ public class Pet {
 
     public Boolean getAdotado() {
         return adotado;
-    }
-
-    public void setAdotado(Boolean adotado) {
-        this.adotado = adotado;
     }
 
     public Abrigo getAbrigo() {

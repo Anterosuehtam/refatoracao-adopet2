@@ -36,10 +36,10 @@ public class AbrigoController {
     @Transactional
     public ResponseEntity<String> cadastrar(@RequestBody @Valid CadastroAbrigoDto dto) {
         try {
-            abrigoService.cadastrar(dto);
+            abrigoService.cadatrar(dto);
             return ResponseEntity.ok().build();
-        } catch (ValidacaoException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (ValidacaoException exception) {
+            return ResponseEntity.badRequest().body(exception.getMessage());
         }
     }
 
@@ -48,7 +48,7 @@ public class AbrigoController {
         try {
             List<PetDto> petsDoAbrigo = abrigoService.listarPetsDoAbrigo(idOuNome);
             return ResponseEntity.ok(petsDoAbrigo);
-        } catch (ValidacaoException e) {
+        } catch (ValidacaoException exception) {
             return ResponseEntity.notFound().build();
         }
     }
@@ -60,8 +60,9 @@ public class AbrigoController {
             Abrigo abrigo = abrigoService.carregarAbrigo(idOuNome);
             petService.cadastrarPet(abrigo, dto);
             return ResponseEntity.ok().build();
-        } catch (ValidacaoException e) {
+        } catch (ValidacaoException exception) {
             return ResponseEntity.notFound().build();
         }
     }
+
 }

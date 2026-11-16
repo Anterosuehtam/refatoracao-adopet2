@@ -23,10 +23,9 @@ public class Tutor {
     private String email;
 
     @OneToMany(mappedBy = "tutor")
-    private List<Adocao> adocoes =  new ArrayList<>();
+    private List<Adocao> adocoes = new ArrayList<>();
 
-    public Tutor() {
-    }
+    public Tutor() {}
 
     public Tutor(CadastroTutorDto dto) {
         this.nome = dto.nome();
@@ -57,10 +56,6 @@ public class Tutor {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -77,7 +72,4 @@ public class Tutor {
         return adocoes;
     }
 
-    public void setAdocoes(List<Adocao> adocoes) {
-        this.adocoes = adocoes;
-    }
 }
